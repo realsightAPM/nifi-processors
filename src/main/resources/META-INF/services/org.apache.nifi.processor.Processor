@@ -1,2 +1,2 @@
 rocks.nifi.examples.processors.JsonProcessor
-com.realsight.nifi.processors.PrometheusProcessor
+com.realsight.nifi.processors.FlattenMapProcessor
