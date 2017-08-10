@@ -68,6 +68,7 @@ public class FlattenMapProcessor extends AbstractProcessor {
             .description("Succes relationship")
             .build();
     
+    
     @Override
     public void init(final ProcessorInitializationContext context){
         List<PropertyDescriptor> properties = new ArrayList<>();
@@ -158,7 +159,16 @@ public class FlattenMapProcessor extends AbstractProcessor {
 
     public static void main(String[] args){
 
-        InputStream content = new ByteArrayInputStream("{\"@timestamp\":\"2017-07-21T02:29:30.000Z\",\"beat\":{\"hostname\":\"BC-VM-1418df5b51e34dfabcc357c96cce26b5\",\"name\":\"BC-VM-1418df5b51e34dfabcc357c96cce26b5\",\"version\":\"3.2.0\"},\"@version\":\"1\",\"host\":\"BC-VM-1418df5b51e34dfabcc357c96cce26b5\",\"type\":\"netstat\",\"exec\":{\"stdout\":\"Active Internet connections (servers and established)\\nProto Recv-Q Send-Q Local Address               Foreign Address             State       PID/Program name    Timer\\ntcp        0      0 0.0.0.0:9999                0.0.0.0:*                   LISTEN      8501/java           off (0.00/0/0)\\ntcp        0      0 0.0.0.0:111                 0.0.0.0:*                   LISTEN      1453/rpcbind        off (0.00/0/0)\\ntcp        0      0 0.0.0.0:22                  0.0.0.0:*                   LISTEN      62825/sshd          off (0.00/0/0)\\ntcp        0      0 127.0.0.1:631               0.0.0.0:*                   LISTEN      9185/cupsd          off (0.00/0/0)\\ntcp        0      0 0.0.0.0:5432                0.0.0.0:*                   LISTEN      6223/postmaster     off (0.00/0/0)\\ntcp        0      0 127.0.0.1:25                0.0.0.0:*                   LISTEN      9082/master         off (0.00/0/0)\\n\",\"exitCode\":0,\"command\":\"netstat\"},\"tags\":[\"beats_input_raw_event\"]}".getBytes());
+        InputStream content = new ByteArrayInputStream(("{\"@timestamp\":\"2017-07-21T02:29:30.000Z\",\"beat\":"
+        		+ "{\"hostname\":\"BC-VM-1418df5b51e34dfabcc357c96cce26b5\",\"name\":\"BC-VM-1418df5b51e34dfabcc357c96cce26b5\","
+        		+ "\"version\":\"3.2.0\"},\"@version\":\"1\",\"host\":\"BC-VM-1418df5b51e34dfabcc357c96cce26b5\",\"type\":\"netstat\","
+        		+ "\"exec\":{\"stdout\":\"Active Internet connections (servers and established)\\nProto Recv-Q Send-Q Local Address               "
+        		+ "Foreign Address             State       PID/Program name    Timer\\ntcp        0      0 0.0.0.0:9999                0.0.0.0:*                   LISTEN     "
+        		+ " 8501/java           off (0.00/0/0)\\ntcp        0      0 0.0.0.0:111                 0.0.0.0:*                   LISTEN      1453/rpcbind        off (0.00/0/0)\\ntcp     "
+        		+ "   0      0 0.0.0.0:22                  0.0.0.0:*                   LISTEN      62825/sshd          off (0.00/0/0)\\ntcp        0      0 127.0.0.1:631               0.0.0.0:*         "
+        		+ "          LISTEN      9185/cupsd          off (0.00/0/0)\\ntcp        0      0 0.0.0.0:5432                0.0.0.0:*                   LISTEN      6223/postmaster     "
+        		+ "off (0.00/0/0)\\ntcp        0      0 127.0.0.1:25                0.0.0.0:*                   LISTEN      9082/master         off (0.00/0/0)\\n\",\"exitCode\":0,\"command\":"
+        		+ "\"netstat\"},\"tags\":[\"beats_input_raw_event\"]}").getBytes());
         //InputStream content = new ByteArrayInputStream("".getBytes());
         // Generate a test runner to mock a processor in a flow
         TestRunner runner = TestRunners.newTestRunner(new FlattenMapProcessor());
